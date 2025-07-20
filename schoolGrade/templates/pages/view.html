@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}{{ pagename }}{% endblock %}
+
+{% block 'body' %}
+<p>{{ classmate.id }}</p>
+<p>{{ classmate.first_name }}</p>
+<p>{{ classmate.last_name }}</p>
+<p>{{ classmate.description }}</p>
+<img src="{{ classmate.profile_image.image.url }}">
+{% endblock %}

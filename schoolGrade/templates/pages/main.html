@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}{{ pagename }}{% endblock %}
+
+{% block 'body' %}
+<header class="block-clear">
+    <p class="float-left">Выпускной класс</p>
+    <p class="float-right">МБОУ СОШ №9</p>
+</header>
+<div class="flex-nums">
+    <p class="sharon-font title fade-in-bottom"><span>11</span>A</p>
+    <p class="big-thin">2024</p>
+</div>
+<img src="{% static 'images/background-all.png' %}" loading="eager" importance="high" class="background-full">
+
+<p class="sharon-font title" style="margin-top: 30vh;">Наш класс</p>
+<div class="card">
+    <img id="classmateImage" class="image-border">
+    <div class="card-text">
+        <p id="classmateLastName" class="sharon-font title fade"></p>
+        <p id="classmateFirstName" class="sharon-font title fade"></p>
+        <p id="classmateDescription" class="fade"></p>
+    </div>
+</div>
+<div class="flex-inline-scroll">
+    {% for item in classmates %}
+    <div onclick="classmate({{ item.id }})">
+        <img class="classmate-card image-border" src="{{ item.profile_image.image.url }}">
+        <p style="text-align: center;">{{ item.first_name }}</p>
+        <p style="text-align: center;">{{ item.last_name }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<p class="sharon-font title">Фотографии...</p>
+<div class="flex-inline-images">
+    <a href="/view-photos"><img src="{% static 'images/Imageall.png' %}" class="image-border"></a>
+    <a href="/view-photos"><img src="{% static 'images/ImageAll.png' %}" class="image-border"></a>
+</div>
+<script>
+classmates = [
+{% for item in classmates %}
+{
+    'id':'classmate-{{ item.id }}',
+    'firstName':'{{ item.first_name }}',
+    'lastName':'{{ item.last_name }}',
+    'description':'\"{{ item.description }}\"',
+    'src':'{{ item.profile_image.image.url }}',
+},
+{% endfor %}
+]
+function classmate(id) {
+    item = classmates[id-1]
+    classmateImage.src = item['src']
+    makeTransition(classmateLastName, item['lastName'])
+    makeTransition(classmateFirstName, item['firstName'])
+    if (item['description'] == '\".\"') {
+        makeTransition(classmateDescription, '')
+    } else {
+        makeTransition(classmateDescription, sentesceUppercase(item['description']))
+    }
+}
+
+function makeTransition(element, content){
+    element.classList.remove("fade"); // removing the class
+    setTimeout(() => {
+        requestAnimationFrame(() => {
+            element.innerHTML = content;
+            element.classList.add("fade");
+        });
+    }, 225);
+}
+
+function sentesceUppercase(text){
+    return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
+classmate(1)
+</script>
+{% endblock %}

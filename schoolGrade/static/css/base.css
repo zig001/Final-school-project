@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+    font-family: 'SharonAP';
+    src: url('../fonts/SharonAP.TTF');
+}
+
+
+@media screen and (min-width: 900px) {
+    body {
+        padding: 60px 20px;
+    }
+    
+    .float-right {
+        float: right;
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    .block-clear {
+        clear: both;
+    }
+
+    .big-thin {
+        font-weight: 100;
+        font-size: 128px;
+    } 
+
+    .title {
+        font-size: 120px;
+        line-height: 4vh;
+        margin: 120px 0 80px 0;
+    }
+    
+    .title>span {
+        font-size: 200px;
+    }
+
+    .card {
+        display: flex;
+        height: 70vh;
+    }
+
+    .card>.image-border {
+        min-width: 26vw;
+        max-width: 26vw;
+    }
+    
+    #classmateDescription {
+        font-size: 34px;
+    }
+    
+    .flex-inline-images {
+        display: flex;
+    }
+
+    .flex-inline-images>a {
+        width: 50%;
+        justify-content: space-evenly;
+        margin: 0 10px;
+    }
+
+    .flex-inline-images>a>img {
+        height: 50vh;
+        width: 100%;
+    }
+
+    .classmate-card{
+        width: 230px;
+        height: 350px;
+    }
+    
+    .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+
+    .image-container>.column{
+        flex: 22%;
+        max-width: 22%;
+        padding: 10px;
+    }
+
+    .card-text {
+        margin-left: 50px;
+    }
+    
+}
+
+@media screen and (max-width: 900px){
+    body {
+        padding: 20px 50px;
+    }
+    
+    .float-right {
+        text-align: center;
+    }
+
+    .float-left {
+        text-align: center;
+    }
+
+    .big-thin {
+        display: none;
+    }
+
+    .title {
+        font-size: 60px;
+        line-height: 2vh;
+        margin: 30px 0;
+    }
+    
+    .title>span {
+        font-size: 100px;
+    }
+
+    .card>.image-border {
+        min-width: 100%;
+        max-width: 100%;
+        height: 50vh;
+    }
+
+    #classmateDescription {
+        font-size: 14px;
+    }
+
+    .flex-inline-images>a {
+        width: 100%;
+        margin: 20px 0;
+    }
+    
+    .flex-inline-images>a>img {
+        height: 25vh;
+        width: 100%;
+    }
+    
+    .classmate-card{
+        width: 130px;
+        height: 200px;
+    }
+
+    .flex-inline-scroll>div>p{
+        font-size: 18px;
+    }
+}
+
+.image-container {
+    width: 100%;
+}
+
+.column>img {
+    margin-top: 20px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.classmate-card{
+    margin: 0 20px;
+}
+
+.flex-inline-images {
+    padding: 10px 0;
+    height: 50vh;
+    width: 100%;
+}
+
+.card {
+    transition: .3s;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.card-text>.sharon-font{
+    line-height: 4vh;
+}
+
+.block-clear {
+    display: block;
+    height: 10vh;
+}
+
+body {
+    background-color: #282828;
+    color: #FFF;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 26px;
+    background-image: url('../images/background.png');
+    background-repeat: repeat-y;
+    background-size: 100%;
+}
+
+section {
+    height: 100vh;
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}  
+
+.flex-inline-scroll {
+    padding: 10px 0;
+    display: flex;
+    overflow-x: auto;
+}
+
+.sharon-font {
+    font-family: 'SharonAP', sans-serif;
+}
+
+.flex-nums {
+    margin-top: 48vh;
+    display: flex;
+    justify-content: center;
+}
+
+.flex-nums>.big-thin {
+    position: absolute;
+    right: 100px;
+    bottom: 80px;
+}
+
+.background-full {
+    position: absolute;
+    height: 100vh;
+    width: 99vw;
+    z-index: -1;
+    top: -3px;
+    left: 0;
+}
+
+img {
+    object-fit: cover;
+}
+
+.fade-in-bottom {
+	animation: fade-in-bottom 1s 1.5s both;
+}
+
+.image-border {
+    transition: .6s;
+    box-shadow: 10px -10px #7A7A7A;
+    border: #282828 1px solid;
+}
+
+.image-border:hover {
+    box-shadow: 0px 0px #7A7A7A;
+    border: #FFF 1px solid;
+}
+
+#classmateFirstName, #classmateLastName, #classmateDescription {
+    opacity: 0;
+    transition: opacity 225ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade {
+    opacity: 1 !important;
+    transition: opacity 300ms cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+@keyframes fade-in-bottom {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    } 
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

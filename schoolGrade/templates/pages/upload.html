@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}{{ pagename }}{% endblock %}
+
+{% block 'body' %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ image_form.as_p }}
+    <button type="submit">Отправить</button>
+</form>
+<br>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>{{ classmate_form.first_name.label }}: </label>{{ classmate_form.first_name }}<br>
+    <label>{{ classmate_form.last_name.label }}: </label>{{ classmate_form.last_name }}<br>
+    <label>{{ classmate_form.description.label }}: </label>{{ classmate_form.description }}<br>
+    <label>{{ classmate_form.profile_image.label }}: </label>
+    <select>
+        {% for picture in classmate_form.fields.profile_image.queryset %}
+            <option value="{{ picture.id }}" data-img-src="http://127.0.0.1:8000{{ MEDIA_URL }}{{ picture.image.url }}">{{ picture.desc }}</option>
+        {% endfor %}
+    </select> <br>
+    <button type="submit">Отправить</button>
+</form>
+{% endblock %}

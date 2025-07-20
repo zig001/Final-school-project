@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'title' %}{{ pagename }}{% endblock %}
+
+{% block 'body' %}
+<p class="sharon-font title" style="text-align: center;"><span>11</span>A</p>
+<p class="sharon-font title" style="text-align: center;">Фотографии</p>
+<div class="image-container">
+    {% for row in photos %}
+    <div class="column">
+        {% for image in row %}
+        <img class="image-border" src="{{ image.image.url }}">
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
